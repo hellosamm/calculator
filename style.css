@@ -1,1 +1,29 @@
+.keypad {
+  display: flex;
+  flex-direction: column;
+}
 
+.button {
+  width: 80px;
+  height: 80px;
+  font-size: x-large;
+  font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
+}
+
+.num {
+  background-color: red;
+}
+
+.operator {
+  background-color: aquamarine;
+}
+
+#screen {
+  height: 80px;
+  width: 400px;
+  text-align: right;
+  background-color: lightgrey;
+  font-size: 60px;
+  font-family: "Courier New", Courier, monospace;
+}
