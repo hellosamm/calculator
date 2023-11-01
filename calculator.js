@@ -4,7 +4,7 @@ const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
-// OPERATE FUNCTION function that takes in 2 number values (a & b), as well as the operator value
+// OPERATE FUNCTIONfunction that takes in 2 number values (a & b), as well as the operator value
 function operate(a, operator, b) {
   if (operator === "+") {
     result = add(a, b);
