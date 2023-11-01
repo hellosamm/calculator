@@ -47,6 +47,12 @@ for (let i = 0; i < numBtn.length; i++) {
     // store the value in an array
     numBtnValues.push(displayValue);
 
+    // Check if the array has more than 2 values
+    if (numBtnValues.length > 2) {
+      // If it has more than 2 values, remove the oldest value
+      numBtnValues.shift();
+    }
+
     // console log the array
     console.log(numBtnValues);
   });
