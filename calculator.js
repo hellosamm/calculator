@@ -38,7 +38,7 @@ for (let i = 0; i < numBtn.length; i++) {
   numBtn[i].addEventListener("click", function () {
     displayValue = numBtn[i].textContent;
     screen.textContent = numBtn[i].textContent;
-    console.log(numBtn[i].textContent);
+    console.log(displayValue);
   });
 }
 
@@ -46,6 +46,6 @@ for (let i = 0; i < numBtn.length; i++) {
 for (let i = 0; i < operatorBtn.length; i++) {
   operatorBtn[i].addEventListener("click", function () {
     operator = operatorBtn[i].textContent;
-    console.log(operatorBtn[i].textContent);
+    console.log(operator);
   });
 }
