@@ -71,7 +71,7 @@ for (let i = 0; i < numBtn.length; i++) {
       operate(a, operator, b);
       screen.textContent = result;
       console.log(result);
-      numBtnValues = [];
+      numBtnValues = [result];
     }
 
     // console log the array
