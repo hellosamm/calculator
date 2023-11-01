@@ -4,7 +4,7 @@ const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
-// function that takes in 2 number values (displayValue), as well as the operator value
+// function that takes in 2 number values (a & b), as well as the operator value
 function operate(a, operator, b) {
   switch (operator) {
     case "+":
@@ -25,20 +25,30 @@ const screen = document.getElementById("screen");
 const operatorBtn = document.getElementsByClassName("operator");
 
 // event listener for the clear button -> currently it console logs a message
-clearBtn.addEventListener("click", function () {
+clearBtn.addEventListener("click", () => {
   console.log("clear the math");
 });
 
 // assigning empty values to store the operator value and the displayValue (the number selected)
 let operator = "";
-let displayValue = "";
+let numBtnValues = [];
+let a = numBtnValues[1];
+let b = numBtnValues[0];
 
 // event listener for number buttons -> stores the value as displayValue, updates the screen and console logs the value
 for (let i = 0; i < numBtn.length; i++) {
   numBtn[i].addEventListener("click", function () {
+    // get the text content of the clicked button, assign it to displayValue
     displayValue = numBtn[i].textContent;
-    screen.textContent = numBtn[i].textContent;
-    console.log(displayValue);
+
+    // update the screen display
+    screen.textContent = displayValue;
+
+    // store the value in an array
+    numBtnValues.push(displayValue);
+
+    // console log the array
+    console.log(numBtnValues);
   });
 }
 
