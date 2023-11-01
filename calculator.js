@@ -6,15 +6,16 @@ const divide = (a, b) => a / b;
 
 // function that takes in 2 number values (a & b), as well as the operator value
 function operate(a, operator, b) {
-  switch (operator) {
-    case "+":
-      return add(a, b);
-    case "-":
-      return subtract(a, b);
-    case "*":
-      return multiply(a, b);
-    case "/":
-      return divide(a, b);
+  if (operator === "+") {
+    result = add(a, b);
+  } else if (operator === "-") {
+    result = subtract(a, b);
+  } else if (operator === "x") {
+    result = multiply(a, b);
+  } else if (operator === "÷") {
+    result = divide(a, b);
+  } else {
+    result = "error";
   }
 }
 
@@ -54,10 +55,23 @@ for (let i = 0; i < numBtn.length; i++) {
     // store the value in an array
     numBtnValues.push(displayValue);
 
-    // Check if the array has more than 3 values
+    // Check if the array has more than 3 values, if it has more than 2 values remove the oldest value
     if (numBtnValues.length > 3) {
-      // If it has more than 2 values, remove the oldest value
       numBtnValues.shift();
+    }
+
+    // if the array has 3 values it defines [a, operator, b]. changes a and b to ints and runs the operate function. it consoles the result and resets the array []
+    if (numBtnValues.length === 3) {
+      console.log(numBtnValues);
+      let [a, operator, b] = numBtnValues;
+      a = parseInt(a);
+      b = parseInt(b);
+
+      // run the operate function
+      operate(a, operator, b);
+      screen.textContent = result;
+      console.log(result);
+      numBtnValues = [];
     }
 
     // console log the array
@@ -73,6 +87,10 @@ for (let i = 0; i < operatorBtn.length; i++) {
 
     //add the operator value to the array
     numBtnValues.push(operator);
+
+    if (numBtnValues.length > 3) {
+      numBtnValues.shift();
+    }
 
     // console log numBtnValue array
     console.log(numBtnValues);
