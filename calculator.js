@@ -26,7 +26,15 @@ const operatorBtn = document.getElementsByClassName("operator");
 
 // event listener for the clear button -> currently it console logs a message
 clearBtn.addEventListener("click", () => {
+  // clears the array
+  numBtnValues = [];
+
+  // updates the screen display to show 00
+  screen.textContent = "00";
+
+  // console logs a message and the empty array
   console.log("clear the math");
+  console.log(numBtnValues);
 });
 
 // assigning empty values to store the operator value and the displayValue (the number selected)
@@ -61,7 +69,10 @@ for (let i = 0; i < numBtn.length; i++) {
 // event listener for operator buttons -> stores the value as operator, console logs the value
 for (let i = 0; i < operatorBtn.length; i++) {
   operatorBtn[i].addEventListener("click", function () {
+    // get the value of the clicked button and assign it to operator
     operator = operatorBtn[i].textContent;
+
+    // console log operator
     console.log(operator);
   });
 }
