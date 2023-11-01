@@ -32,8 +32,7 @@ clearBtn.addEventListener("click", () => {
   // updates the screen display to show 00
   screen.textContent = "00";
 
-  // console logs a message and the empty array
-  console.log("clear the math");
+  // console logs the empty array
   console.log(numBtnValues);
 });
 
@@ -55,8 +54,8 @@ for (let i = 0; i < numBtn.length; i++) {
     // store the value in an array
     numBtnValues.push(displayValue);
 
-    // Check if the array has more than 2 values
-    if (numBtnValues.length > 2) {
+    // Check if the array has more than 3 values
+    if (numBtnValues.length > 3) {
       // If it has more than 2 values, remove the oldest value
       numBtnValues.shift();
     }
@@ -72,7 +71,10 @@ for (let i = 0; i < operatorBtn.length; i++) {
     // get the value of the clicked button and assign it to operator
     operator = operatorBtn[i].textContent;
 
-    // console log operator
-    console.log(operator);
+    //add the operator value to the array
+    numBtnValues.push(operator);
+
+    // console log numBtnValue array
+    console.log(numBtnValues);
   });
 }
