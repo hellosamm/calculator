@@ -26,10 +26,42 @@ const screen = document.getElementById("screen");
 const operatorBtn = document.getElementsByClassName("operator");
 const enterBtn = document.getElementById("equal");
 
-//CLEAR BUTTON event listener for the clear button -> currently it console logs a message
-clearBtn.addEventListener("click", () => {
-  // clears the array
+// assigning empty values to store the operator value and the displayValue (the number selected)
+let operator = "";
+let numBtnValues = [];
+let a = numBtnValues[1];
+let b = numBtnValues[0];
+let displayValue = "";
+
+// clears the array
+function resetArray() {
   numBtnValues = [];
+  a = "underfined";
+  b = "undefined";
+  displayValue = "";
+}
+
+function calculate() {
+  // turn the strings of numbers into ints for the equation
+  let [a, operator, b] = numBtnValues;
+  a = parseInt(a);
+  b = parseInt(b);
+
+  // run the operate function and calculate the equation
+  operate(a, operator, b);
+  screen.textContent = result;
+  console.log(result);
+  numBtnValues = [result];
+  console.log(numBtnValues);
+
+  let answer = result;
+  resetArray();
+  displayValue = answer;
+}
+
+//CLEAR BUTTON event listener for the clear button
+clearBtn.addEventListener("click", () => {
+  resetArray();
 
   // updates the screen display to show 00
   screen.textContent = "00";
@@ -37,13 +69,6 @@ clearBtn.addEventListener("click", () => {
   // console logs the empty array
   console.log(numBtnValues);
 });
-
-// assigning empty values to store the operator value and the displayValue (the number selected)
-let operator = "";
-let numBtnValues = [];
-let a = numBtnValues[1];
-let b = numBtnValues[0];
-let displayValue = "";
 
 // NUMBER BUTTONS event listener for number buttons -> stores the value as displayValue, updates the screen and console logs the value
 for (let i = 0; i < numBtn.length; i++) {
@@ -53,9 +78,6 @@ for (let i = 0; i < numBtn.length; i++) {
 
     // update the screen display
     screen.textContent = displayValue;
-
-    // console log the array
-    console.log(numBtnValues);
   });
 }
 
@@ -90,18 +112,8 @@ enterBtn.addEventListener("click", function () {
 
   // if the array has 3 values it defines [a, operator, b]. changes a and b to ints and runs the operate function. it consoles the result and resets the array []
   if (numBtnValues.length === 3) {
-    console.log("there are 3 numbers to math");
     console.log(numBtnValues);
 
-    // turn the strings of numbers into ints for the equation
-    let [a, operator, b] = numBtnValues;
-    a = parseInt(a);
-    b = parseInt(b);
-
-    // run the operate function and calculate the equation
-    operate(a, operator, b);
-    screen.textContent = result;
-    console.log(result);
-    numBtnValues = [result];
+    calculate();
   }
 });
