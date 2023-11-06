@@ -4,7 +4,7 @@ const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
-// OPERATE FUNCTIONfunction that takes in 2 number values (a & b), as well as the operator value
+// OPERATE FUNCTION function that takes in 2 number values (a & b), as well as the operator value
 function operate(a, operator, b) {
   if (operator === "+") {
     result = add(a, b);
@@ -24,6 +24,7 @@ const clearBtn = document.getElementById("clearButton");
 const numBtn = document.getElementsByClassName("num");
 const screen = document.getElementById("screen");
 const operatorBtn = document.getElementsByClassName("operator");
+const enterBtn = document.getElementById("equal");
 
 //CLEAR BUTTON event listener for the clear button -> currently it console logs a message
 clearBtn.addEventListener("click", () => {
@@ -42,37 +43,16 @@ let operator = "";
 let numBtnValues = [];
 let a = numBtnValues[1];
 let b = numBtnValues[0];
+let displayValue = "";
 
 // NUMBER BUTTONS event listener for number buttons -> stores the value as displayValue, updates the screen and console logs the value
 for (let i = 0; i < numBtn.length; i++) {
   numBtn[i].addEventListener("click", function () {
     // get the text content of the clicked button, assign it to displayValue
-    displayValue = numBtn[i].textContent;
+    displayValue += numBtn[i].textContent;
 
     // update the screen display
     screen.textContent = displayValue;
-
-    // store the value in an array
-    numBtnValues.push(displayValue);
-
-    // Check if the array has more than 3 values, if it has more than 2 values remove the oldest value
-    if (numBtnValues.length > 3) {
-      numBtnValues.shift();
-    }
-
-    // if the array has 3 values it defines [a, operator, b]. changes a and b to ints and runs the operate function. it consoles the result and resets the array []
-    if (numBtnValues.length === 3) {
-      console.log(numBtnValues);
-      let [a, operator, b] = numBtnValues;
-      a = parseInt(a);
-      b = parseInt(b);
-
-      // run the operate function
-      operate(a, operator, b);
-      screen.textContent = result;
-      console.log(result);
-      numBtnValues = [result];
-    }
 
     // console log the array
     console.log(numBtnValues);
@@ -85,8 +65,14 @@ for (let i = 0; i < operatorBtn.length; i++) {
     // get the value of the clicked button and assign it to operator
     operator = operatorBtn[i].textContent;
 
+    // store the number value in an array
+    numBtnValues.push(displayValue);
+
     //add the operator value to the array
     numBtnValues.push(operator);
+
+    // clear the number value and the screen
+    displayValue = "";
 
     if (numBtnValues.length > 3) {
       numBtnValues.shift();
@@ -96,3 +82,26 @@ for (let i = 0; i < operatorBtn.length; i++) {
     console.log(numBtnValues);
   });
 }
+
+// ENTER BUTTON event listener -> runs the operate function
+enterBtn.addEventListener("click", function () {
+  // store the number value in an array
+  numBtnValues.push(displayValue);
+
+  // if the array has 3 values it defines [a, operator, b]. changes a and b to ints and runs the operate function. it consoles the result and resets the array []
+  if (numBtnValues.length === 3) {
+    console.log("there are 3 numbers to math");
+    console.log(numBtnValues);
+
+    // turn the strings of numbers into ints for the equation
+    let [a, operator, b] = numBtnValues;
+    a = parseInt(a);
+    b = parseInt(b);
+
+    // run the operate function and calculate the equation
+    operate(a, operator, b);
+    screen.textContent = result;
+    console.log(result);
+    numBtnValues = [result];
+  }
+});
