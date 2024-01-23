@@ -7,23 +7,49 @@
   width: 80px;
   height: 80px;
   font-size: x-large;
-  font-family: "Courier New", Courier, monospace;
+  font-family: sans-serif;
   cursor: pointer;
+  border-radius: 8px;
+  margin: 4px;
+  border-color: black;
 }
 
 .num {
-  background-color: red;
+  background-color: #04aa6d;
+  color: white;
 }
 
 .operator {
-  background-color: aquamarine;
+  background-color: rgb(130, 239, 203);
 }
 
 #screen {
   height: 80px;
-  width: 400px;
+  width: 375px;
   text-align: right;
   background-color: lightgrey;
   font-size: 60px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: sans-serif;
+  font-weight: 100;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px;
+  border-style: solid;
+}
+
+.screenContent {
+  padding: 6px;
+}
+
+.calculatorContent {
+  background-color: darkgrey;
+  width: 375px;
+  padding: 20px;
+  border-radius: 8px;
+  border-style: solid;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
 }
